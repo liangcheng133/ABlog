@@ -1,0 +1,144 @@
+*{
+  margin: 0 auto;
+  padding: 0;
+}
+
+ul,ol,li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+#app{
+  width: 100%;
+  padding: 10px 0;
+  float: left;
+}
+
+body{
+  background-color: rgb(230, 230, 230);
+}
+
+/* 页面居中 */
+.ab_center{
+  width: 100%;
+  margin: 40px auto 0;
+  max-width: 1100px;
+}
+
+/* 头部 */
+.ab_box{
+  width: 100%;
+  float: left;
+  background-color: #fff;
+  padding: 35px 30px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.ab_logo{
+  float: left;
+  font-weight: bold;
+}
+
+.ab_logo a{
+  color: #000;
+}
+
+.ab_logo::after{
+  content: " ";
+  border-right: 2px solid #ccc;
+  margin-left: 30px;
+}
+
+.ab_head{
+  font-size: 1.1rem;
+  user-select: none;
+  float: left;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.ab_head ul li{
+  float: left;
+  margin-left: 30px;
+}
+
+.ab_head ul .ab_head_active a{
+  color: #000;
+}
+
+.ab_head ul li a{
+  color: #ccc;
+}
+
+.ab_head ul li a:hover{
+  color: #000;
+}
+
+
+/* 搜索框 */
+.ab_search{
+  float: right;
+  width: 220px;
+  margin-right: 20px;
+}
+
+.ab_search form{
+  position: relative;
+}
+
+.ab_search form input:first-child{
+  width: 155px;
+  padding: 6.5px 20px 6.5px 10px ;
+  float: left;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #757575;
+  border: none;
+  border: 2px solid #000;
+}
+
+.ab_search form button{
+  position: absolute;
+  width: 40px;
+  height: 32.3px;
+  right: 0;
+  top: 0;
+  border-radius: 0 5px 5px 0;
+  cursor:pointer;
+  background: #000;
+  border: none;
+  outline: none;
+}
+
+.ab_search form button::before{
+  content: " ";
+  background: url(../img/search.png) no-repeat;
+  background-size: 60%;
+  background-position: 50% 50%;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* 版权信息 */
+.ab_copyright{
+  float: left;
+  width: 100%;
+  user-select: none;
+}
+
+.ab_copyright span{
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #ccc;
+}
+
+.ab_copyright span a{
+  color: #ccc;
+  text-decoration-color: #000;
+}
