@@ -79,29 +79,34 @@
       margin-right: 10px;
       color: #A5A5A5;
    }
-  /* 文章引用样式 */
-/*  blockquote{
-    border-left: 8px solid #D0E5F2;
-    background-color: #F1F1F1;
-    display: block;
-    padding: 20px 0 20px 10px;
-    color: #757575;
-  } */
 
   /* table 样式 */
   table {
-    border-top: 1px solid #ccc;
-    border-left: 1px solid #ccc;
+    border-top: 1px solid #E1E1E1;
+    border-left: 1px solid #E1E1E1;
+    font-size: 0.9rem;
+    width: 0;
+    margin: 0;
   }
-  table td,
-  table th {
-    border-bottom: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    padding: 3px 5px;
+  table th,
+  table td{
+    padding: 10px 25px;
+    color: #2D2E2E;
+  }
+  table td{
+    border-bottom: 1px solid #E1E1E1;
+    border-right: 1px solid #E1E1E1;
+  }
+  table tr{
+    background-color: #FEFEFE;
+  }
+  table tr:nth-child(2n -1){
+    background-color: #F2F2F2;
   }
   table th {
-    border-bottom: 2px solid #ccc;
-    text-align: center;
+    border-bottom: 2px solid #E1E1E1;
+    background-color: #E9EAEC;
+    text-align: left;
   }
 
   /* blockquote 样式 */
