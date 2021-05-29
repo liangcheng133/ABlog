@@ -3,12 +3,12 @@
     <div class="ablog_newArticle">
       <div class="ablog_newArticleLabel">总点击排行</div>
       <ul v-for="val in articleLabels">
-        <li><a :href="'/article?id=' + val.aID" target="_blank">{{val.aName}}</a></li>
+        <li><a :href="'/article?id=' + val.aID" target="_blank" :title="val.aName">{{val.aName | sliceStr(20)}}</a></li>
       </ul>
     </div>
   </div>
 </template>
-  
+
 <script>
 export default {
   data() {
@@ -32,6 +32,16 @@ export default {
     },
     created() {
       this.findAll();
+    },
+    filters: {
+      sliceStr (str, sliLength){
+        // console.log(str + " " + sliLength);
+        if(str.length >= sliLength){
+          return str.slice(0, sliLength) + "...";
+        }else{
+          return str;
+        }
+      }
     }
 }
 </script>
@@ -42,24 +52,30 @@ export default {
     width: 100%;
   }
   .ablog_newArticleLabel{
-    font-weight: bold;
     font-size: 0.98rem;
     padding-bottom: 10px;
     margin-bottom: 15px;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 1px solid #ddd;
     width: 100%;
   }
-  .ablog_newArticle ul li{
-    list-style: square;
-    margin-left: 15px;
+  .ablog_newArticleLabel::before{
+    content: ' ';
+    width: 21px;
+    height: 21px;
+    display: block;
+    float: left;
+    background: url(../../../static/img/hot.png);
+    background-size: 100%;
   }
   .ablog_newArticle ul li a{
-    font-size: 0.94rem;
+    font-size: 0.9rem;
     display: block;
     width: 100%;
     color: #757575;
-    padding: 3px 0 3px 5px;
+    margin: 5px 0;
+    padding-left: 5px;
     transition: all 0.3s;
+    line-height: 1.5;
   }
   .ablog_newArticle ul li a:hover{
     background-color: #757575;

@@ -5,9 +5,7 @@
 
         <bloghead></bloghead>
 
-        <router-view>
-
-        </router-view>
+        <router-view v-wechat-title="$route.meta.title"></router-view>
 
         <blogcopy></blogcopy>
 
@@ -15,7 +13,7 @@
     </div>
     <div class="sidebar">
       <ul>
-        <li><a class="login" href="" title="登录"></a></li>
+        <li><a class="login" href="javascript:;" title="登录"></a></li>
         <li><a class="author" href="javascript:;" title="作者联系方式"></a></li>
         <li><a class="backTop" href="javascript:;" @click="backTop" title="返回顶部"></a></li>
       </ul>
@@ -26,6 +24,11 @@
 <script>
   export default{
     name: 'App',
+    data() {
+      return {
+
+      }
+    },
     methods: {
       backTop() {
         window.scrollTo({
@@ -39,6 +42,9 @@
 
 <style>
   @import '../static/css/app.css';
+  [v-cloak]{
+    display: none;
+  }
   .sidebar{
     position: fixed;
     bottom: 10%;
@@ -92,4 +98,5 @@
   .backTop:hover{
     background: url('../static/img/backTop_select.png');
   }
+
 </style>

@@ -15,15 +15,19 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/home'  //重定向
+      redirect: '/home',  //重定向
     },
     {
       path: '/home',  //路由地址
-      component: Home //路由参数
+      component: Home,  //路由参数
+      comment: resolve => {require(['@/components/Home/Home'], resolve)},
+      meta: {title: "AliangのBlog | 首页"}
     },
     {
       path: '/grouping',
-      component: Grouping
+      component: Grouping,
+      comment: resolve => {require(['@/components/Home/Home'], resolve)},
+      meta: {title: "AliangのBlog | 分类"}
     },
     {
       path: '/article',

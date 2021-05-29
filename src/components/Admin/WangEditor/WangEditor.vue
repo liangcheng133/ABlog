@@ -21,7 +21,7 @@
         let article = {
           aName: '文章标题',
           aContent: this.editor.txt.html(),
-          aPreviewText: this.editor.txt.text(),
+          aPreviewText: this.editor.txt.text().slice(0,100),
           aLabelID: 3,
         };
         console.log(article);
@@ -34,9 +34,6 @@
             _this.editor.txt.clear();
           }
         });
-
-
-
       }
     },
     mounted() {

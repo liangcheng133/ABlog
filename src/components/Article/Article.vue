@@ -35,6 +35,8 @@
         .then(function(res) {
           _this.articleList = res.data;
           _this.labelUrl = res.data.data[0].labelName;
+          document.title = res.data.data[0].aName;
+          // console.log(document.title);
           // console.log(res);
         }, function(err) {
           console.log(err);
@@ -47,7 +49,7 @@
 
 </script>
 
-<style>
+<style >
   .box{
     width: 100%;
     float: left;
@@ -133,10 +135,8 @@
   pre code {
     display: block;
   }
-
-  /* ul ol 样式 */
-  ul, ol {
-    margin: 10px 0 10px 20px;
+  p{
+    line-height: 25px;
   }
 
 </style>

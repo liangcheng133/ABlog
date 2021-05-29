@@ -7,9 +7,13 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import api from './router/Api'
 import qs from 'qs'
+import VueWeChatTitle from 'vue-wechat-title' //路由跳转改变标签 <虽然我感觉它没什么用处>
 
 Vue.config.productionTip = false
+
 Vue.use(VueAxios, axios)
+Vue.use(VueWeChatTitle)
+
 Vue.prototype.$axios = axios
 Vue.prototype.api = api
 Vue.prototype.qs = qs

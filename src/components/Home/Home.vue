@@ -15,6 +15,21 @@
           </ul>
         </div>
 
+        <div class="pageNum">
+          <ul>
+            <li><a href="javascript:;" v-show="nowPage != 1">< 上一页</a></li>
+            <li v-for="i in countPage">
+              <a href="javascript:;" :style=" i <= pageBegin - 1 || i >= pageEnd + 1 ? 'display:none' : ''" :class="nowPage == i ? 'page_active' : ''" @click="findAllArticle(i)">{{i}}</a>
+            </li>
+            <li><a href="javascript:;" v-show="nowPage != countPage">下一页 ></a></li>
+          </ul>
+          <div>
+            <span>总共有{{countPage}}页，跳转到</span>
+            <input type="text" id="pageText" @keyup.enter="changePage($event)"/>
+            <span>页</span>
+          </div>
+
+        </div>
 
       </div>
       <div class="ab_ctRight">
@@ -29,28 +44,76 @@
     name: 'home',
     data() {
       return {
-        articleList: '',
+        articleList: '',  //  文章列表
+        countPage: 40,     //  总页数
+        nowPage: 1,       //  当前页
+        pageBegin: 1,     //  起始页
+        pageEnd: 3,       //  终止页
       }
     },
     methods: {
-      findAll() {
+      // 查找指定页数文章
+      findAllArticle(nowPage) {
         let _this = this;  //指向vue实例本身，用在axios函数体中访问data数据
         // url = http://localhost/API/findAll.php
         // 后台url http://47.95.12.168/API/findAll.php
-        this.axios.get(this.api.INTERFACES.allArticle)
+        this.axios.get(this.api.INTERFACES.allArticle + nowPage)
         .then(function(res) {
           _this.articleList = res.data.data;
-          // console.log(_this.articleList);
+          _this.nowPage = nowPage;
+
+          //  针对页数过多时的处理，限制每次只提供3个页数
+          if(_this.countPage <= 1){
+            _this.pageEnd = 1;
+          }
+
+          if(_this.nowPage >= 2 && _this.nowPage <= _this.countPage -1){
+            _this.pageBegin = _this.nowPage - 1;
+            _this.pageEnd = _this.nowPage + 1;
+            // console.log(_this.pageBegin + " | " + _this.pageEnd);
+          }else{
+            _this.pageBegin = _this.nowPage - 2;
+            _this.pageEnd = _this.nowPage + 2;
+            // console.log(_this.pageBegin + " | " + _this.pageEnd);
+          }
+
+          //  返回顶部
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
         }, function(err) {
           console.log(err);
         })
-      }
-    },
-    filters: {
+      },
 
+      // 查找文章分页数量
+      getPageNum() {
+        let _this = this;
+        this.axios.get(this.api.INTERFACES.allCountArticle)
+        .then(function(res) {
+          _this.countPage = parseInt(res.data.data.limitCount) + 1;
+        }, function(err) {
+          console.log(err);
+        })
+      },
+
+      //  用户跳转指定页数
+      changePage(event) {
+        const userPage = event.currentTarget.value;
+        const inputE = event.target;
+        inputE.blur();
+        inputE.value = '';
+        if(!isNaN(userPage) && userPage != '' && userPage <= this.countPage){
+            this.findAllArticle(parseInt(userPage));
+        }else{
+          alert("请输入小于页数的数字哦QAQ");
+        }
+      },
     },
     created() {
-      this.findAll();
+      this.getPageNum();
+      this.findAllArticle(this.nowPage);
     }
   }
 </script>
@@ -64,14 +127,16 @@
   .ab_ctLeft{
     float: left;
     width: 60%;
-    margin-right: 90px;
+    margin-right: 45px;
   }
   .ab_ctRight{
     float: left;
     width: 30%;
+    padding-left: 45px;
+    border-left: 1px solid #ddd;
   }
   .ab_article{
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #ddd;
     padding-bottom: 20px;
     margin-bottom: 30px;
   }
@@ -116,5 +181,36 @@
     margin-right: 3px;
     position: relative;
     top: 3px;
+  }
+  .pageNum{
+    margin: 0 auto;
+    color: #757575;
+  }
+  .pageNum li{
+    float: left;
+  }
+  .pageNum li a{
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    color: #757575;
+    transition: all .2s;
+    margin-right: 7px;
+  }
+  .pageNum li a:hover{
+    border-bottom: 2px solid #099FE4;
+    background-color: #F8F8F8;
+  }
+  .pageNum .page_active{
+    border-bottom: 2px solid #099FE4;
+    background-color: #F8F8F8;
+  }
+  .pageNum span, .pageNum input{
+    float: left;
+  }
+  .pageNum input{
+    width: 50px;
+    padding: 2px 3px;
+    margin: 0 5px;
+    text-align: center;
   }
 </style>
