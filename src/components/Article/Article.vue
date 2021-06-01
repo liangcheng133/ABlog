@@ -26,9 +26,6 @@
     created() {
       // 获取url中的参数
       const query = this.$router.history.current.query.id;
-      // console.log(query);
-      // console.log(this.api.INTERFACES.useArticle + query);
-      // url = http://localhost/API/findArticle.php?id=1
       let _this = this;  //指向vue实例本身，用在axios函数体中使用
       if(query != null && query != ''){
         this.axios.get(this.api.INTERFACES.useArticle + query)
@@ -36,8 +33,6 @@
           _this.articleList = res.data;
           _this.labelUrl = res.data.data[0].labelName;
           document.title = res.data.data[0].aName;
-          // console.log(document.title);
-          // console.log(res);
         }, function(err) {
           console.log(err);
         })

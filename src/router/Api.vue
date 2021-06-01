@@ -11,6 +11,7 @@
     useArticle: '/find_Use_Article.php?id=',
     addArticle: '/add_Article.php',
     allCountArticle: '/find_All_CountArticle.php',
+    allLabel: '/find_All_Label.php',
   };
 
   const base = function() {

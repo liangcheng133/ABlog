@@ -17,11 +17,11 @@
 
         <div class="pageNum">
           <ul>
-            <li><a href="javascript:;" v-show="nowPage != 1">< 上一页</a></li>
+            <li><a href="javascript:;" v-show="nowPage != 1" @click="findAllArticle(nowPage - 1)">< 上一页</a></li>
             <li v-for="i in countPage">
               <a href="javascript:;" :style=" i <= pageBegin - 1 || i >= pageEnd + 1 ? 'display:none' : ''" :class="nowPage == i ? 'page_active' : ''" @click="findAllArticle(i)">{{i}}</a>
             </li>
-            <li><a href="javascript:;" v-show="nowPage != countPage">下一页 ></a></li>
+            <li><a href="javascript:;" v-show="nowPage != countPage" @click="findAllArticle(nowPage + 1)">下一页 ></a></li>
           </ul>
           <div>
             <span>总共有{{countPage}}页，跳转到</span>
