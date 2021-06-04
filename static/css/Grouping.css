@@ -45,7 +45,7 @@
   width: 4px;
 }
 .timeTree ul:not(:last-child)::before{
-  height: 130%;
+  height: 160%;
 }
 
 .timeTree ul li{

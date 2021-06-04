@@ -3,8 +3,8 @@
 </template>
 
 <script>
-  // 接口地址
-  const baseUrl = 'http://47.95.12.168/API';
+  // 接口地址 47.95.12.168
+  const baseUrl = 'http://localhost/API';
 
   // 接口路径
   const APILIST = {
@@ -14,6 +14,9 @@
     addArticle: '/add_Article.php',
     allCountArticle: '/find_All_CountArticle.php',
     allLabel: '/find_All_Label.php',
+    groupingArticle: '/find_Grouping_Article.php',
+    yearsArticle: '/find_Years_Article.php',
+    test: '/find_Test.php?years=',
   };
 
   // 地址拼接
@@ -24,7 +27,7 @@
     }
     return api;
   };
-  
+
   // 暴露
   export default {
     INTERFACES: base()
