@@ -1,0 +1,106 @@
+.groupingContent, .timeTree{
+  float: left;
+  margin-top: 20px;
+  width: 100%;
+}
+.groupingContent ul, .groupingContent ul li{
+  float: left;
+}
+.groupingContent ul li .active{
+  border: 1px solid #099FE4;
+  box-shadow: 2px 2px 2px #ccc;
+}
+.groupingContent ul li a{
+  float: left;
+  display: flex;
+  padding: 10px 30px;
+  margin: 0 8px 8px 0;
+  color: #757575;
+  transition: all .4s;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px #ccc;
+}
+.groupingContent ul li a:hover{
+  border-bottom: 1px solid #099FE4;
+  box-shadow: 2px 2px 2px #ccc;
+}
+
+/* 时间树 */
+.timeTree{
+  position: relative;
+  left: 5%;
+}
+.timeTree ul{
+  position: relative;
+  margin-bottom: 50px;
+}
+.timeTree ul::before{
+  background: #e6e6e6;
+  content: ' ';
+  height: 100%;
+  left: 0;
+  margin-left: 2px;
+  position: absolute;
+  width: 4px;
+}
+.timeTree ul:not(:last-child)::before{
+  height: 130%;
+}
+
+.timeTree ul li{
+  position: relative;
+  margin-bottom: 30px;
+  transition: all .2s;
+}
+.timeTree ul li div{
+  display: inline-block;
+}
+.timeTree ul li:first-child::before{
+  display: none;
+}
+.timeTree ul li:first-child{
+  margin-bottom: 40px;
+  font-size: 1.4em;
+  font-weight: bold;
+  display: inline-block;
+  position: inherit;
+  left: -40px;
+  background-color: #fff;
+  padding: 0 10px;
+}
+.timeTree ul li:not(:first-child){
+  border-bottom: 1px dashed #ccc;
+  padding: 5px 0;
+  margin-left: 3px;
+}
+.timeTree ul li::before{
+  content: " ";
+  float: left;
+  padding: 4px;
+  background-color: #999;
+  border-radius: 50%;
+  position: absolute;
+  left: -3px;
+  top: 40%;
+  transition: all .2s;
+}
+.timeTree ul li:not(:first-child):hover{
+  border-color: #666;
+}
+.timeTree ul li:hover::before{
+  background-color: #666;
+}
+.timeTree ul li span{
+  width: 30px;
+  text-align: right;
+  display: block;
+  float: left;
+  margin-right: 20px;
+  font-size: 0.8em;
+  line-height: 25px;
+  color: #aaaaaa;
+}
+.timeTree ul li a{
+  color: #555;
+}

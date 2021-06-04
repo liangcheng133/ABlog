@@ -1,5 +1,5 @@
 <template>
-  <div id='app'>
+  <div id='app' >
     <div class="ab_center">
       <div class="ab_box">
 

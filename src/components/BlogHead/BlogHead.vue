@@ -4,7 +4,7 @@
     <ul>
       <li :class="isShow == 'home' ? 'ab_head_active' : ''"><a href="/">首页</a></li>
       <li :class="isShow == 'grouping' ? 'ab_head_active' : ''"><a href="/grouping">分类</a></li>
-      <li><a href="javascript:;">关于</a></li>
+      <li :class="isShow == 'about' ? 'ab_head_active' : ''"><a href="/about">关于</a></li>
       <li><a href="javascript:;">归档</a></li>
       <li><a href="javascript:;">杂谈</a></li>
     </ul>
@@ -22,15 +22,19 @@
     data() {
       return {
         isShow: 'home',
+        showArr: ['home', 'grouping', 'about'],
       }
     },
     created () {
       if(this.$route.path != null){
         let path = this.$route.path.slice(1);
-        if(path != 'home' && path != 'grouping'){
-          this.isShow = 'home';
-        }else{
-          this.isShow = path;
+        for(let i = 0; i < this.showArr.length; i++) {
+          if(path != this.showArr[i]) {
+            this.isShow = "home";
+          }else{
+            this.isShow = this.showArr[i];
+            break;
+          }
         }
       }else{
         this.isShow = 'home';

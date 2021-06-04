@@ -7,6 +7,7 @@ import BlogCopyComponent from '@/components/BlogCopy/BlogCopy'
 import Article from '@/components/Article/Article'
 import SideContent from '@/components/SideContent/SideContent'
 import wangEditor from '@/components/Admin/WangEditor/WangEditor'
+import About from '@/components/About/About'
 
 Vue.use(Router)
 
@@ -36,6 +37,10 @@ export default new Router({
     {
       path: '/admin/wangeditor',
       component: wangEditor
+    },
+    {
+      path: '/about',
+      component: About
     },
   ]
 })
