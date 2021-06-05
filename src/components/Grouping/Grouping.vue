@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- {{groupingList}} -->
     <div class="groupingContent">
       <ul>
         <li><a href="javascript:;" class="active">全部</a></li>
@@ -9,8 +10,7 @@
     <div class="timeTree">
       <ul v-for="val in yearsArticle">
         <li><div>{{val.years}}</div></li>
-        <!-- <li v-for="art in groupings" v-if="val.years == art.years"><span>{{art.days}}</span><a href="javascript:;">{{art.aName}}</a></li> -->
-        <li v-for="v, k, i in findTest(val.years)"><span>{{v}} {{k}} {{i}}</span><a href="javascript:;"></a></li>
+        <li v-for="art in groupingList" v-if="val.years == art.years"><span>{{art.days}}日</span><a :href="'/article?id=' + art.aID" target="_blank">{{art.aName}}</a></li>
       </ul>
     </div>
   </div>
@@ -21,7 +21,7 @@
     data() {
       return {
         labels: '',
-        groupings: '',
+        groupingList: null,
         yearsArticle: '',
       }
     },
@@ -40,7 +40,7 @@
         let _this = this;
         this.axios.get(this.api.INTERFACES.groupingArticle)
         .then(function(res) {
-          _this.groupings = res.data.data;
+          _this.groupingList = res.data.data;
         }, function(err) {
           console.log(err);
         })
@@ -54,19 +54,6 @@
           console.log(err);
         })
       },
-      findTest(years) {
-        let _this = this;
-        this.axios.get(this.api.INTERFACES.test + years)
-        .then(function(res) {
-
-          console.log(res.data.data);
-          let result = res.data.data;
-          return result;
-
-        }, function(err) {
-          console.log(err);
-        })
-      }
     },
     created() {
       this.findLabel();
