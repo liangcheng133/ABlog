@@ -44,19 +44,22 @@
     name: 'home',
     data() {
       return {
-        articleList: '',  //  文章列表
-        countPage: 40,     //  总页数
-        nowPage: 1,       //  当前页
-        pageBegin: 1,     //  起始页
-        pageEnd: 3,       //  终止页
+        //  文章列表
+        articleList: '',
+        //  总页数
+        countPage: 0,
+        //  当前页
+        nowPage: 1,
+        //  起始页
+        pageBegin: 1,
+        //  终止页
+        pageEnd: 3,
       }
     },
     methods: {
       // 查找指定页数文章
       findAllArticle(nowPage) {
         let _this = this;  //指向vue实例本身，用在axios函数体中访问data数据
-        // url = http://localhost/API/findAll.php
-        // 后台url http://47.95.12.168/API/findAll.php
         this.axios.get(this.api.INTERFACES.allArticle + nowPage)
         .then(function(res) {
           _this.articleList = res.data.data;

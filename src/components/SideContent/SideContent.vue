@@ -10,7 +10,7 @@
     <div class="ablog_label">
       <span>标签</span>
        <ul>
-         <li v-for="val in labels"><a href="javascript:;" :title="val.lableName">{{val.labelName}}</a></li>
+         <li v-for="val in labels"><a :href="'/grouping?ID=' + val.labelID" :title="val.lableName">{{val.labelName}}</a></li>
        </ul>
     </div>
   </div>

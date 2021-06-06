@@ -6,9 +6,10 @@
 .groupingContent ul, .groupingContent ul li{
   float: left;
 }
-.groupingContent ul li .active{
+.groupingContent ul li .activeLabel{
   border: 1px solid #099FE4;
   box-shadow: 2px 2px 2px #ccc;
+  background-color: #F8F8F8;
 }
 .groupingContent ul li a{
   float: left;
@@ -33,7 +34,11 @@
 }
 .timeTree ul{
   position: relative;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
+  padding-bottom: 30px;
+}
+.timeTree ul:last-child{
+  padding-bottom: 0;
 }
 .timeTree ul::before{
   background: #e6e6e6;
@@ -43,9 +48,10 @@
   margin-left: 2px;
   position: absolute;
   width: 4px;
+  /* top: 30px; */
 }
 .timeTree ul:not(:last-child)::before{
-  height: 160%;
+  /* height: 120%; */
 }
 
 .timeTree ul li{
